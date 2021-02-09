@@ -71,16 +71,23 @@ const renderCountry = function (data, className = '') {
 // const request = new XMLHttpRequest();
 // request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
 
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+//     .then(function (resp) {
+//       console.log(resp);
+//       return resp.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       renderCountry(data[0]);
+//     });
+// };
+
+//simplified with arrow functions
 const getCountryData = function (country) {
   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
-    .then(function (resp) {
-      console.log(resp);
-      return resp.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      renderCountry(data[0]);
-    });
+    .then(resp => resp.json())
+    .then(data => renderCountry(data[0]));
 };
 
 getCountryData('portugal');
